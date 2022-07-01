@@ -20,7 +20,6 @@ class SongCrudController extends AbstractCrudController
     {
         return [
             //IdField::new('id'),
-            //TextEditorField::new('description'),
             TextField::new('title', 'Titre'),
             AssociationField::new('singer', 'Chanteur'),
             DateTimeField::new('release_date', 'Date de sortie')
