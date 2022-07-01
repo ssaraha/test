@@ -1,0 +1,10 @@
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <img class="w-50" src="{{ asset('images/singer/avatar.jpg') }}" alt="{{ singer.firstname }} {{ singer.lastname}}">
+        <div class="card-body">
+            <h5 class="card-title">{{ singer.firstname }} {{ singer.lastname}}</h5>
+            <p class="card-text">{{ singer.adress |nl2br }}</p>
+            <p>{{ singer.city}}</p>
+        </div>    
+    </div>
+</div>

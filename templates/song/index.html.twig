@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SongController!{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        {{ form_start( searchForm ) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_row(searchForm.title, 
+                        {
+                            'attr': {
+                                'class': 'form-control'
+                            }}) 
+                        }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_row(searchForm.singer, {
+                            'attr': {
+                                'class': 'form-control'
+                            }}) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-small btn-block">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+        {{ form_end( searchForm ) }}
+    </div>
+    <h1 class="m-4 text-center text-success">Liste des chansons</h1>
+    <div class="row">
+        {% if songs|length > 0 %}
+            {% for song in songs %}
+               {{ include('song/_list_song.html.twig') }}
+            {% endfor %}
+        {% endif %}
+    <div>
+    <div class="row">
+        <div class="pagination">
+            {{ knp_pagination_render(songs) }}
+        </div>
+    </div>
+{% endblock %}

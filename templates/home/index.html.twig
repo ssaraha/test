@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        {{ form_start( searchForm ) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_row(searchForm.firstName, 
+                        {
+                            'attr': {
+                                'class': 'form-control'
+                            }}) 
+                        }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_row(searchForm.lastName, {
+                            'attr': {
+                                'class': 'form-control'
+                            }}) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-small btn-block">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+        {{ form_end( searchForm ) }}
+    </div>
+    <h1 class="m-4 text-center text-success">Liste des chanteurs</h1>
+    <div class="row">
+        {% if singers|length > 0 %}
+            {% for singer in singers %}
+               {{ include('home/_list_singer.html.twig') }}
+            {% endfor %}
+        {% endif %}
+    <div>
+    <div class="pagination">
+        {{ knp_pagination_render(singers) }}
+    </div>
+{% endblock %}
